@@ -16,6 +16,6 @@ export function validateSelectOptions(options) {
     return options.every(isSelectOptionValid)
 }
 
-function isSelectOptionValid({ value, label }) {
+export function isSelectOptionValid({ value, label }) {
     return typeof value === 'number' && typeof label === 'string'
 }
