@@ -1,9 +1,7 @@
 <script setup>
-import { PlusIcon } from '@heroicons/vue/24/outline';
 import { isActivityValid, validateActivities } from '../validators';
 import ActivityItem from '../components/ActivityItem.vue';
-import BaseButton from '../components/BaseButton.vue';
-
+import TheActivityForm from '../components/TheActivityForm.vue';
 
 defineProps({
     activities: {
@@ -17,8 +15,6 @@ const emit = defineEmits({
     createActivity: isActivityValid,
     deleteActivity: isActivityValid
 })
-
-let newActivity = ''
 </script>
 
 <template>
@@ -31,20 +27,6 @@ let newActivity = ''
             @delete="emit('deleteActivity', activity)" 
         />
         </ul>
-        <form 
-            @submit.prevent="emit('createActivity', newActivity)" 
-            class="sticky bottom-[57px] flex gap-2 border-t bg-white p-4"
-        >
-            <input 
-                type="text" 
-                :value="newActivity"
-                @input="newActivity = $event.target.value" 
-                class="w-full rounded border px-4 text-xl" 
-                placeholder="Activity name" 
-            />
-            <BaseButton>
-                <PlusIcon class="h-8" />
-            </BaseButton>
-        </form>
+        <TheActivityForm @submit="emit('createActivity', $event)" />
     </div>
 </template>
