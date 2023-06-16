@@ -1,10 +1,10 @@
-import { PAGE_TIMELINE, HOURS_IN_DAY, SECONDS_IN_HOUR, MINUTES_IN_HOUR, SECONDS_IN_MINUTE, MILLISECONDS_IN_SECONDS } from './constants';
+import { PAGE_TIMELINE, HOURS_IN_DAY, SECONDS_IN_HOUR, MINUTES_IN_HOUR, SECONDS_IN_MINUTE, MILLISECONDS_IN_SECOND } from './constants';
 import { isPageValid, isNull } from './validators';
 
 export function formatSeconds(seconds) {
     const date = new Date()
 
-    date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECONDS)
+    date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECOND)
 
     const utc = date.toUTCString()
 
