@@ -44,7 +44,9 @@ const emit = defineEmits({
             isActivityValid(activity)
         ].every(Boolean)
     }
-})
+});
+
+defineExpose({ scrollToHour })
 
 const timelineItemRefs = ref([]);
 
