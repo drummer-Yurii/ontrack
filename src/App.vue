@@ -27,6 +27,11 @@ function goTo(page) {
   if (currentPage.value === PAGE_TIMELINE && page === PAGE_TIMELINE) {
     timeline.value.scrollToHour()
   }
+
+  if (page !== PAGE_TIMELINE) {
+    document.body.scrollIntoView()
+  }
+
   currentPage.value = page
 }
 
