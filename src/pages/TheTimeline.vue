@@ -8,7 +8,8 @@ import {
     validateActivities, 
     isTimelineItemValid, 
     isActivityValid,
-    isPageValid
+    isPageValid,
+    isNumber
 } from '../validators';
 
 const props = defineProps({
@@ -38,6 +39,9 @@ const props = defineProps({
 });
 
 const emit = defineEmits({
+    updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
+        return [isTimelineItemValid(timelineItem), isNumber(activitySeconds)].every(Boolean)
+    },
     setTimelineItemActivity( timelineItem, activity ) {
         return [
             isTimelineItemValid(timelineItem),
@@ -83,6 +87,7 @@ function scrollToHour(hour = null, isSmooth = true) {
                 ref="timelineItemRefs"
                 @scroll-to-hour="scrollToHour"
                 @select-activity="emit('setTimelineItemActivity', timelineItem, $event )"
+                @update-activity-seconds="emit('updateTimelineItemActivitySeconds', timelineItem, $event)"
             />
         </ul>
     </div>

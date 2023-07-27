@@ -19,6 +19,10 @@ const props = defineProps({
     }
 })
 
+const emit = defineEmits({
+    updateSeconds: isNumber
+})
+
 const seconds = ref(props.seconds)
 const isRunning = ref(false)
 
@@ -26,6 +30,7 @@ const isStartButtonDisabled = props.hour !== new Date().getHours()
 
 function start() {
     isRunning.value = setInterval(() => {
+        emit('updateSeconds', 1)
         seconds.value++
     }, MILLISECONDS_IN_SECOND)
 }
@@ -38,6 +43,7 @@ function stop() {
 
 function reset() {
     stop()
+    emit('updateSeconds', -seconds.value)
 
     seconds.value = 0
 }
