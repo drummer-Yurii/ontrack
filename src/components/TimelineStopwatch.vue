@@ -5,7 +5,7 @@ import { BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING, BUTTON_TYPE_DANGER, MILLISECO
 import { isTimelineItemValid } from '../validators';
 import BaseButton from './BaseButton.vue';
 import { updateTimelineItemActivitySecondsKey } from '../keys';
-import { formatSeconds } from '../functions';
+import { currentHour, formatSeconds } from '../functions';
 
 const props = defineProps({
     timelineItem: {
@@ -20,7 +20,7 @@ const updateTimelineItemActivitySeconds = inject(updateTimelineItemActivitySecon
 const seconds = ref(props.timelineItem.activitySeconds)
 const isRunning = ref(false)
 
-const isStartButtonDisabled = props.timelineItem.hour !== new Date().getHours()
+const isStartButtonDisabled = props.timelineItem.hour !== currentHour()
 
 function start() {
     isRunning.value = setInterval(() => {
