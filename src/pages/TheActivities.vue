@@ -14,7 +14,6 @@ defineProps
 })
 
 const emit = defineEmits({
-    createActivity: isActivityValid,
     deleteActivity: isActivityValid
 })
 </script>
@@ -30,6 +29,6 @@ const emit = defineEmits({
         />
         </ul>
         <TheActivitiesEmptyState v-else />
-        <TheActivityForm @submit="emit('createActivity', $event)" />
+        <TheActivityForm />
     </div>
 </template>
