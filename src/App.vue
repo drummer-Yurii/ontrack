@@ -1,7 +1,7 @@
 <script setup>
-import { provide, ref, readonly } from 'vue'
+import { provide, readonly } from 'vue'
 import { PAGE_ACTIVITIES, PAGE_TIMELINE, PAGE_PROGRESS } from './constants'
-import { generateTimelineItems, generatePeriodSelectOptions } from './functions'
+import { generatePeriodSelectOptions } from './functions'
 import { currentPage, timelineRef } from './router'
 import * as keys from './keys'
 import { 
@@ -11,21 +11,12 @@ import {
   deleteActivity, 
   activities 
 } from './activities'
+import { updateTimelineItemActivitySeconds, setTimelineItemActivity, timelineItems } from './timeline-items'
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
 import TheActivities from './pages/TheActivities.vue'
 import TheTimeline from './pages/TheTimeline.vue'
 import TheProgressVue from './pages/TheProgress.vue'
-
-const timelineItems = ref(generateTimelineItems(activities.value))
-
-function setTimelineItemActivity(timelineItem, activityId) {
-  timelineItem.activityId = activityId
-}
-
-function updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
-  timelineItem.activitySeconds += activitySeconds
-}
 
 provide(keys.updateTimelineItemActivitySecondsKey, updateTimelineItemActivitySeconds)
 
