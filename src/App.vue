@@ -11,7 +11,7 @@ import {
   deleteActivity, 
   activities 
 } from './activities'
-import { updateTimelineItemActivitySeconds, setTimelineItemActivity, timelineItems } from './timeline-items'
+import { updateTimelineItemActivitySeconds, setTimelineItemActivity, timelineItems, resetTimelineItemActivities } from './timeline-items'
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
 import TheActivities from './pages/TheActivities.vue'
@@ -26,7 +26,10 @@ provide(keys.setTimelineItemActivityKey, setTimelineItemActivity)
 
 provide(keys.createActivityKey, createActivity)
 
-provide(keys.deleteActivityKey, deleteActivity)
+provide(keys.deleteActivityKey, (activity) => {
+  resetTimelineItemActivities(activity)
+  deleteActivity(activity)
+})
 
 provide(keys.activitySelectOptionsKey, readonly(activitySelectOptions))
 
