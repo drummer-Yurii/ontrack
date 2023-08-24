@@ -4,15 +4,7 @@ import TimelineItem from '../components/TimelineItem.vue';
 import { MIDNIGHT_HOUR, PAGE_TIMELINE } from '../constants';
 import { currentHour } from '../functions';
 import { currentPage } from '../router';
-import { validateTimelineItems } from '../validators';
-
-defineProps({
-    timelineItems: {
-        required: true,
-        type: Array,
-        validator: validateTimelineItems
-    }
-});
+import { timelineItems } from '../timeline-items';
 
 defineExpose({ scrollToHour })
 
