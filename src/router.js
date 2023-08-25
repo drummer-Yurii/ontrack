@@ -1,6 +1,15 @@
 import { ref } from "vue";
-import { PAGE_TIMELINE } from "./constants";
+import { PAGE_ACTIVITIES, PAGE_TIMELINE, PAGE_PROGRESS } from './constants'
+import TheActivities from './pages/TheActivities.vue'
+import TheTimeline from './pages/TheTimeline.vue'
+import TheProgress from './pages/TheProgress.vue'
 import { isPageValid } from './validators'
+
+export const routes = {
+  [PAGE_TIMELINE]: TheTimeline,
+  [PAGE_ACTIVITIES]: TheActivities,
+  [PAGE_PROGRESS]: TheProgress,
+}
 
 export const currentPage = ref(normalizePageHash())
 
