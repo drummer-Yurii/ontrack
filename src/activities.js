@@ -2,8 +2,11 @@ import { ref, computed } from 'vue'
 import { id } from './functions'
 import { SECONDS_IN_HOUR } from './constants'
 
-
 export const activities = ref(generateActivities())
+
+export const trackedActivities = computed(() =>
+  activities.value.filter(({ secondsToComplete }) => secondsToComplete)
+)
 
 export const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
 
@@ -12,7 +15,7 @@ export function createActivity(activity) {
 }
 
 export function updateActivity(activity, fields) {
-    return Object.assign(activity, fields)
+  return Object.assign(activity, fields)
 }
 
 export function deleteActivity(activity) {
