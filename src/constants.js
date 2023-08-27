@@ -52,4 +52,8 @@ export const MIDNIGHT_HOUR = 0;
 
 export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()
 
+export const LOW_PERCENT = 33
+
+export const MEDIUM_PERCENT = 66
+
 export const HUNFRED_PERCENT = 100
