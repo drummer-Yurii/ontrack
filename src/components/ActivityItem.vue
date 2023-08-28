@@ -6,7 +6,7 @@ import { deleteActivity, updateActivity } from '../activities'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import BaseSelect from './BaseSelect.vue'
-import { resetTimelineItemActivities } from '../timeline-items'
+import { timelineItems, resetTimelineItemActivities } from '../timeline-items'
 import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
 
 defineProps({
@@ -18,7 +18,7 @@ defineProps({
 })
 
 function deleteAndResetActivity(activity) {
-  resetTimelineItemActivities(activity)
+  resetTimelineItemActivities(timelineItems.value, activity)
   deleteActivity(activity)
 }
 </script>
