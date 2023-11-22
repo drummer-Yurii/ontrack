@@ -3,6 +3,7 @@ import {
   HUNDRED_PERCENT,
   MILLISECONDS_IN_SECOND,
   SECONDS_IN_DAY,
+  SECONDS_IN_MINUTE,
 } from './constants'
 
 
@@ -21,7 +22,7 @@ import {
   export function startTimer() {
     now.value = new Date()
     timer = setInterval(() => {
-      now.value = new Date(now.value.getTime() + 5 * 60 * MILLISECONDS_IN_SECOND)
+      now.value = new Date(now.value.getTime() + SECONDS_IN_MINUTE * MILLISECONDS_IN_SECOND)
     }, MILLISECONDS_IN_SECOND)
   }
 
