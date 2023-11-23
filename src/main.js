@@ -6,18 +6,24 @@ import App from './App.vue'
 
 import './assets/main.css'
 
+loadState()
+
 document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hiden') {
-        console.log('hidden');
-        saveState()
-    }
+  document.visibilityState === 'visible' ? loadState() : saveState()
 })
 
+function loadState() {
+  const state = storage.load()
+
+  timelineItems.value = state.timelineItems
+  activities.value = state.activities
+}
+
 function saveState() {
-    storage.save({
-        timelineItems: timelineItems.value,
-        activities: activities.value
-    })
+  storage.save({
+    timelineItems: timelineItems.value,
+    activities: activities.value
+  })
 }
 
 createApp(App).mount('#app')
