@@ -9,7 +9,7 @@ import {
   startTimelineItemTimer,
   stopTimelineItemTimer,
   timelineItemTimer
-} from '../timeline-items'
+} from '../timeline-item-timer'
 import { now } from '../time'
 import { formatSeconds } from '../functions'
 
