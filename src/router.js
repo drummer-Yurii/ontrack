@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref } from 'vue'
 import { PAGE_ACTIVITIES, PAGE_TIMELINE, PAGE_PROGRESS } from './constants'
 import TheActivities from './pages/TheActivities.vue'
 import TheTimeline from './pages/TheTimeline.vue'
@@ -8,7 +8,7 @@ import { isPageValid } from './validators'
 export const routes = {
   [PAGE_TIMELINE]: TheTimeline,
   [PAGE_ACTIVITIES]: TheActivities,
-  [PAGE_PROGRESS]: TheProgress,
+  [PAGE_PROGRESS]: TheProgress
 }
 
 export const currentPage = ref(normalizePageHash())
@@ -20,13 +20,13 @@ export function navigate(page) {
 }
 
 export function normalizePageHash() {
-    const page = window.location.hash.slice(1)
+  const page = window.location.hash.slice(1)
 
-    if (isPageValid(page)) {
-        return page
-    }
+  if (isPageValid(page)) {
+    return page
+  }
 
-    window.location.hash = PAGE_TIMELINE
+  window.location.hash = PAGE_TIMELINE
 
-    return PAGE_TIMELINE
-};
+  return PAGE_TIMELINE
+}
